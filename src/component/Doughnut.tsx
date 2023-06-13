@@ -1,24 +1,27 @@
-import { Card, Title, DonutChart } from "@tremor/react";
-
-const cities = [
-  {
-    name: "Male",
-    value: 40,
-  },
-  {
-    name: "Female",
-    value: 50,
-  },
-  {
-    name: "Children",
-    value: 10,
-  },
-];
+import { DonutChart } from "@tremor/react";
+import { useStore } from "../utils/useStore";
 
 const valueFormatter = (number: number) =>
   `${Intl.NumberFormat("us").format(number).toString()}`;
 
 const Doughnut = () => {
+  const femaleCount = useStore((state) => state.femaleCount);
+  const childrenCount = useStore((state) => state.childrenCount);
+  const maleCount = useStore((state) => state.maleCount);
+  const cities = [
+    {
+      name: "Male",
+      value: maleCount,
+    },
+    {
+      name: "Female",
+      value: femaleCount,
+    },
+    {
+      name: "Children",
+      value: childrenCount,
+    },
+  ];
   return (
     <div className="w-[200px] h-[200px]">
       <DonutChart

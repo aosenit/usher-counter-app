@@ -1,21 +1,30 @@
-import { useState } from "react";
 import Counter from "./Counter";
+import { useStore } from "../utils/useStore";
 
 const Main = () => {
-  const [maleCount, setMaleCount] = useState(0);
-  const [femaleCount, setFemaleCount] = useState(0);
-  const [childrenCount, setChildrenCount] = useState(0);
+  const setTotalCount = useStore((state) => state.setTotalCount);
+
+  const setChildren = useStore((state) => state.setChildrenCount);
+  const femaleCount = useStore((state) => state.femaleCount);
+  const childrenCount = useStore((state) => state.childrenCount);
+  const maleCount = useStore((state) => state.maleCount);
+  const setFemaleCount = useStore((state) => state.setFemaleCount);
+
+  const setMaleCount = useStore((state) => state.setMaleCount);
 
   const handleIncrement = (character: string) => {
     switch (character) {
       case "male":
-        setMaleCount((prevCount) => prevCount + 1);
+        setMaleCount("plus");
+
         break;
       case "female":
-        setFemaleCount((prevCount) => prevCount + 1);
+        setFemaleCount("plus");
+
         break;
       case "children":
-        setChildrenCount((prevCount) => prevCount + 1);
+        setChildren("plus");
+
         break;
       default:
         break;
@@ -26,17 +35,17 @@ const Main = () => {
     switch (character) {
       case "male":
         if (maleCount > 0) {
-          setMaleCount((prevCount) => prevCount - 1);
+          setMaleCount("minus");
         }
         break;
       case "female":
         if (femaleCount > 0) {
-          setFemaleCount((prevCount) => prevCount - 1);
+          setFemaleCount("minus");
         }
         break;
       case "children":
         if (childrenCount > 0) {
-          setChildrenCount((prevCount) => prevCount - 1);
+          setChildren("minus");
         }
         break;
       default:
@@ -44,7 +53,7 @@ const Main = () => {
     }
   };
 
-  const total = maleCount + femaleCount + childrenCount;
+  setTotalCount(maleCount + femaleCount + childrenCount);
   return (
     <div className="grid gap-5">
       <Counter

@@ -4,7 +4,7 @@ import Main from "./component/Main";
 
 function App() {
   return (
-    <div className="h-screen lg:h-[900px] w-screen lg:w-[400px] mx-auto border-[#F5F5F5] border-[1px]">
+    <div className="h-screen  w-screen lg:w-[400px] mx-auto border-[#F5F5F5] border-[1px] relative">
       <header>
         <Header />
       </header>

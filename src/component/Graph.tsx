@@ -1,6 +1,7 @@
 import { Card, Metric, Text } from "@tremor/react";
 
 import Doughnut from "./Doughnut";
+import { useStore } from "../utils/useStore";
 
 export type Characters = {
   label: string;
@@ -9,6 +10,7 @@ export type Characters = {
 };
 
 const Graph = () => {
+  const totalCount = useStore((state) => state.totalCount);
   return (
     <>
       <div className="grid gap-4">
@@ -16,7 +18,7 @@ const Graph = () => {
       </div>
       <Card className="max-w-md mx-auto">
         <Text>Total</Text>
-        <Metric className="">100</Metric>
+        <Metric className="">{totalCount}</Metric>
       </Card>
     </>
   );

@@ -16,7 +16,7 @@ const Counter = ({
   return (
     <div className="flex justify-between items-center gap-1">
       <div
-        className={`rounded-full h-[80px] w-[80px] text-white  text-[40px] grid place-content-center`}
+        className={`cursor-pointer rounded-full h-[80px] w-[80px] text-white  text-[40px] grid place-content-center`}
         style={{ background: color }}
         onClick={onDecrement}
       >
@@ -36,7 +36,7 @@ const Counter = ({
       </div>
       <div
         style={{ background: color }}
-        className={`rounded-full h-[80px] w-[80px] text-white text-[40px] grid place-content-center`}
+        className={`cursor-pointer rounded-full h-[80px] w-[80px] text-white text-[40px] grid place-content-center`}
         onClick={onIncrement}
       >
         +
