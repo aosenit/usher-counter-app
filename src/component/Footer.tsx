@@ -1,7 +1,10 @@
+import { useStore } from "../utils/useStore";
+
 const Footer = () => {
+  const setAllToZero = useStore((state) => state.setAllToZero);
   const icons = [
-    { name: "fa fa-check", color: "green" },
-    { name: "fa fa-home", color: "blue" },
+    // { name: "fa fa-check", color: "green" },
+    // { name: "fa fa-home", color: "blue" },
     { name: "fa fa-times", color: "red" },
   ];
   return (
@@ -12,6 +15,7 @@ const Footer = () => {
             className={`${icon.name} text-[35px]`}
             aria-hidden="true"
             style={{ color: icon.color }}
+            onClick={setAllToZero}
           ></i>
         ))}
       </div>

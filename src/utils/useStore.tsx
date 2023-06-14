@@ -9,6 +9,7 @@ interface storeState {
   setFemaleCount: (sign: string) => void;
   childrenCount: number;
   setChildrenCount: (sign: string) => void;
+  setAllToZero?: () => void;
 }
 
 export const useStore = create<storeState>((set) => ({
@@ -30,5 +31,13 @@ export const useStore = create<storeState>((set) => ({
     set((state) => ({
       childrenCount:
         sign === "plus" ? state.childrenCount + 1 : state.childrenCount - 1,
+    })),
+
+  setAllToZero: () =>
+    set((state) => ({
+      femaleCount: (state.femaleCount = 0),
+      maleCount: (state.maleCount = 0),
+      childrenCount: (state.childrenCount = 0),
+      totalCount: (state.totalCount = 0),
     })),
 }));
